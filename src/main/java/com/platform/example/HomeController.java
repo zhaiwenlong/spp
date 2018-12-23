@@ -1,6 +1,7 @@
 package com.platform.example;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,10 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author： Administrator
  * @Date： 2018-12-22 23:49
  **/
-@RestController
+@Controller
 public class HomeController {
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    @RequestMapping("/hello")
     public String printHelloWorld() {
-        return "hello world!";
+        return "readingList";
+    }
+
+    @RequestMapping("/helloo")
+    public String printHelloWorld1() {
+        return "hahaha";
     }
 }
