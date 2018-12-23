@@ -1,10 +1,10 @@
 package com.platform.example;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Description：
@@ -14,8 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class HomeController {
     @RequestMapping("/hello")
-    public String printHelloWorld() {
-        return "readingList";
+    public ModelAndView printHelloWorld(HttpServletRequest request) {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        ModelAndView modelAndView = new ModelAndView();
+        if (email != null && password != null) {
+            modelAndView.setViewName("datashow");
+            modelAndView.addObject("key", "email："+ email + " password：" + password);
+            return modelAndView;
+        } else {
+            modelAndView.setViewName("readingList");
+            return modelAndView;
+        }
     }
 
     @RequestMapping("/helloo")
